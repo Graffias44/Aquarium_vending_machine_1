@@ -33,7 +33,7 @@ def decide_quantity(chosen_product)
   quantity_of_product
 end
 
-# 合計金額を計算する
+# 合計金額を計算
 def calculate_charges(chosen_product, quantity_of_product)
   total_price = chosen_product[:price] * quantity_of_product
   if quantity_of_product >= DISCOUNT_STANDARD_VALUE
@@ -44,6 +44,15 @@ def calculate_charges(chosen_product, quantity_of_product)
   puts "それでは当館でのお時間をお楽しみください。"
 end
 
+# メソッド呼び出しの部分-------------------------------------------
+
+# 商品データ
+products = [
+  {name: "大人(高校生以上)", price: 1350},
+  {name: "小・中学生", price: 600},
+  {name: "幼児(4歳以上)", price:300},
+  {name: "65歳以上)", price:1200}
+]
 
 
 # 定数を設定。ここでの変更がコード全体に反映される
@@ -53,3 +62,7 @@ DISCOUNT_STANDARD_VALUE = 2 # 割引きを適用する個数の基準値 (変更
 DISCOUNT_RATE = 0.1 # 割引率(変更可)
 AFTER_DISCOUNT_RATE = 1 - DISCOUNT_RATE # 割引後の本体価格の割合(変更不可)
 
+disp_products(products) # 商品を表示
+chosen_product = choose_product(products) # 商品を選択
+quantity_of_product = decide_quantity(chosen_product) # 個数を決定
+calculate_charges(chosen_product, quantity_of_product) # 合計金額を計算
